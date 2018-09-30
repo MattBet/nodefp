@@ -1,0 +1,14 @@
+extends layout
+
+block body
+    h1 Register
+    form(method="POST", action="/users/login")
+        .form-group
+            label Username:
+            input.form-control(name="username")
+        .form-group
+            label Password:
+            input.form-control(name="password", type="password")
+        br
+        hr
+        input.btn.btn-primary(type="submit", value="Submit")

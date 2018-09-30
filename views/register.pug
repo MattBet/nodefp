@@ -1,0 +1,23 @@
+extends layout
+
+block body
+    h1 Register
+    form(method="POST", action="/users/register")
+        .form-group
+            label Name:
+            input.form-control(name="name", type="text")
+        .form-group
+            label Email:
+            input.form-control(name="email", type="email")
+        .form-group
+            label Username:
+            input.form-control(name="username")
+        .form-group
+            label Password:
+            input.form-control(name="password", type="password")
+        .form-group
+            label Repeat password:
+            input.form-control(name="password_confirm", type="password")
+        br
+        hr
+        input.btn.btn-primary(type="submit", value="Submit")
