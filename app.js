@@ -93,11 +93,6 @@ let users = require('./routes/users');
 app.use('/articles', articles);
 app.use('/users', users);
 
-
-
-
-
-
 // Home Route
 app.get('/', (req,res) => {
     Article.find({}, function(err, articles){

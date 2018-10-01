@@ -65,7 +65,7 @@ router.get('/edit/:id', ensureAuthenticated, (req , res) => {
 
         if (err) throw err;
 
-        if(article.author !== req.user._id){
+        if(article.author !== req.user.id){
             req.flash('danger', 'Not authorized');
             res.redirect('/');
         }
@@ -76,7 +76,7 @@ router.get('/edit/:id', ensureAuthenticated, (req , res) => {
     })
 });
 
-// UPDATE
+// POST UPDATE
 router.post('/edit/:id', (req,res) => {
     let article = {};
     article.title = req.body.title;
@@ -98,8 +98,7 @@ router.post('/edit/:id', (req,res) => {
 // DELETE
 router.delete('/:id', (req, res) => {
 
-    if(!req.user._id)
-    {
+    if(!req.user._id) {
         res.status(500).send();
     }
 
@@ -107,7 +106,7 @@ router.delete('/:id', (req, res) => {
 
     Article.findById(req.params.id, function(err, article){
 
-        if(article.author !== req.user._id){
+        if(article.author !== req.user.id){
             res.status(500).send()
         } else {
             Article.deleteOne(query, function(err) {
