@@ -45,7 +45,7 @@ router.post('/add', (req,res) => {
     }
 });
 
-// Get Single Article
+// GET Single Article
 router.get('/:id', (req , res) => {
     Article.findById(req.params.id, function(err, article) {
         if (err) throw err;
@@ -80,7 +80,7 @@ router.get('/edit/:id', ensureAuthenticated, (req , res) => {
 router.post('/edit/:id', (req,res) => {
     let article = {};
     article.title = req.body.title;
-    article.author = req.body.author;
+    article.author = req.user.id;
     article.body = req.body.body;
 
     let query = {_id:req.params.id};
